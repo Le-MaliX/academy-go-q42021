@@ -8,11 +8,7 @@ import (
 func Routes() *gin.Engine {
 	r := gin.Default()
 
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"status": "ok",
-		})
-	})
+	r.GET("/", controllers.Home)
 
 	r.GET("/monsters", controllers.GetAllMonsters)
 

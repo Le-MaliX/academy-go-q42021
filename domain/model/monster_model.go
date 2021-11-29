@@ -1,9 +1,9 @@
 package model
 
 type Monster struct {
-	Id              string
+	Id              int
 	Name            string
 	ChallengeRating string
 	HPDice          string
-	HP              string
+	HP              int
 }

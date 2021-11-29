@@ -16,7 +16,7 @@ func GetAllMonsters() ([]model.Monster, error) {
 	return monsters, nil
 }
 
-func GetMonsterById(id string) (model.Monster, error) {
+func GetMonsterById(id int) (model.Monster, error) {
 	var monster model.Monster
 	monsters, err := repository.GetMonstersData()
 	if err != nil {

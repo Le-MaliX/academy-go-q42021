@@ -3,6 +3,7 @@ package repository
 import (
 	"encoding/csv"
 	"os"
+	"strconv"
 
 	"github.com/Le-MaliX/ACADEMY-GO-Q42021/domain/model"
 )
@@ -33,12 +34,25 @@ func GetMonstersData() ([]model.Monster, error) {
 	var monsters []model.Monster
 
 	for _, line := range csvLines {
+		if line[0] == "ID" {
+			continue
+		}
+		id, err := strconv.Atoi(line[0])
+		if err != nil {
+			return nil, err
+		}
+
+		hp, err := strconv.Atoi(line[19])
+		if err != nil {
+			return nil, err
+		}
+
 		monster := model.Monster{
-			Id:              line[0],
+			Id:              id,
 			Name:            line[1],
 			ChallengeRating: line[2],
 			HPDice:          line[18],
-			HP:              line[19],
+			HP:              hp,
 		}
 		monsters = append(monsters, monster)
 	}
